@@ -4,13 +4,17 @@ import numpy as np
 import plotly.express as px
 #from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
+import os
 st.title('Sentiment Analysis of Tweeets about US Airlines')
 #st.markdown('My first streamlit dashboard')
 st.sidebar.title('Sentiment Analysis of Tweeets about US Airlines')
 st.markdown('This app is used to analyze sentiment of tweets.🇨🇳')
 st.sidebar.markdown('Analyze sentiment of tweets.🇨🇳')
 
-data_url = ('/Users/dahaixing/Downloads/archive (2)/Tweets.csv')
+path = os.path.dirname(__file__)
+data_url =  os.path.join(path, 'Tweets.csv')       
+
+#data_url = ('/Users/dahaixing/Downloads/archive (2)/Tweets.csv')
 
 @st.cache(persist=True)
 def load_data():
@@ -46,7 +50,8 @@ if not st.sidebar.checkbox('Hide', True):
 
 
 st.sidebar.subheader('When and where are users tweeting from')
-map_data = pd.read_csv('/Users/dahaixing/Downloads/crimes/2022-05/2022-05-south-wales-street.csv')
+#map_data = pd.read_csv('/Users/dahaixing/Downloads/crimes/2022-05/2022-05-south-wales-street.csv')
+map_data = pd.read_csv(os.path.join(path, '2022-05-south-wales-street.csv') ) 
 map_data = map_data[(map_data['latitude'].notnull())&(map_data['longitude'].notnull())]
 #st.map(map_data)
 #st.write(map_data)
