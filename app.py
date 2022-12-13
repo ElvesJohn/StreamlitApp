@@ -35,7 +35,7 @@ st.sidebar.markdown(data.query('airline_sentiment== @random_tweet')[['text']].sa
 
 st.sidebar.markdown('### Num of tweets by sentiment')
 
-select = st.sidebar.selectbox('Visualization type', ['Hist', 'Piechart'], key = '1')
+select = st.sidebar.selectbox('Visualization type', ['Hist', 'Piechart'], key = '11')
 sentiments_count = data['airline_sentiment'].value_counts()
 sentiments_count = pd.DataFrame({'Sentiment': sentiments_count.index, 'Tweets': sentiments_count.values})
 
